@@ -1,0 +1,7 @@
+matplotlib
+pandas
+pillow
+plotly
+plotly_express
+neuralprophet
+matplotlib
