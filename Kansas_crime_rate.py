@@ -101,13 +101,17 @@ with col5:
     day_of_week= day_of_incident.pivot(index= 'DAY_OF_WEEK', columns='DATA_YEAR', values= 'INCIDENT_ID')
 
     fig = px.line(day_of_week)
+    fig.update_xaxes(title_text='Day of the week') 
+    fig.update_yaxes(title_text='Number of incidents')
     st.plotly_chart(fig, use_container_width=True, key='styled-graph')
    
 with col6:
     st.header("Weapons used by offenders")
     filtered_df_weapon = data_year[data_year['WEAPON_ID'] != 'Unarmed']
     fig = px.bar(filtered_df_weapon['WEAPON_ID'].value_counts(),
-                orientation='h', labels={'index': 'Type of Weapon', 'value': 'Count'})
+                orientation='h')
+    fig.update_xaxes(title_text='Type of weapons') 
+    fig.update_yaxes(title_text='Count')
     st.plotly_chart(fig, use_container_width=True, key='styled-graph')
 
 #most commons crimes against person and property
@@ -127,7 +131,9 @@ with col7:
 
     #Create the horizontal bar chart with Plotly Express
     fig = px.bar(df_top_offense_person['OFFENSE_TYPE_ID'].value_counts(),
-                orientation='h', labels={'index': 'Type of offense', 'value': 'Count'})
+                orientation='h')
+    fig.update_xaxes(title_text='Type of offense') 
+    fig.update_yaxes(title_text='Count')
     st.plotly_chart(fig, use_container_width=True, key='styled-graph')
    
 with col8:
@@ -144,7 +150,9 @@ with col8:
 
     #Create the horizontal bar chart with Plotly Express
     fig = px.bar(df_top_offense_property['OFFENSE_TYPE_ID'].value_counts(),
-                orientation='h', labels={'index': 'Type of offense', 'value': 'Count'})
+                orientation='h')
+    fig.update_xaxes(title_text='Type of offense') 
+    fig.update_yaxes(title_text='Count')
     st.plotly_chart(fig, use_container_width=True, key='styled-graph')
 
 ##Forecasting chart##
